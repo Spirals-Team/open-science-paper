@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="{{ site.description }}">
+  <meta name="keywords" content="{{site.keywords}}">
+  <meta name="author" content="{{site.author}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/normalize.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/solo.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
+  {% if site.font-awesome-include %}<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">{% endif %}
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/rrssb.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css">
+  <!-- lib - js -->
+  <script src="{{ site.baseurl }}/scripts/jquery.js"></script>
+  <script src="{{ site.baseurl }}/scripts/bootstrap.min.js"></script>
+  <!-- end lib - js -->
+  <link rel="canonical" href="{{ site.url }}" />
+  {% seo %}
+</head>
+<body onload="loadComment()">
+  <article>
+   <div class="container">
+    <h1><a href="./">{{ site.title }}</a></h1>
+    <div class="auteurs">
+     {% for author in site.authors %}
+      <div class="auteur">
+        {{ author.name }}
+        <br />
+        {{ author.mail }}
+        <br />
+        {{ author.location }}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="contenu">
+      {{ content }}
+    </div>
+      <div id="comments" class="list-group"></div>
+  <div id="addComment">
+    <a href="https://github.com/{{site.username}}/{{site.reponame}}/issues" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" target="_blank">Add Issue</a>
+  </div>
+   </div>
+  </article>
+  <script type="text/javascript">
+  var user = "{{ site.username }}"
+  var repo = "{{ site.reponame }}"
+  </script>
+  <script src="{{ site.baseurl }}/scripts/rrssb.min.js"></script>
+  <script src="{{ site.baseurl }}/scripts/retrieveIssues.js"></script>
+</body>
+</html>
