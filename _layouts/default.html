@@ -40,9 +40,17 @@
       {{ content }}
     </div>
       <div id="comments" class="list-group"></div>
-  <div id="addComment">
-    <a href="https://github.com/{{site.username}}/{{site.reponame}}/issues" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" target="_blank">Add Issue</a>
-  </div>
+    <div id="addComment">
+      <div>
+        <input id="username" type="text" placeholder="username">
+        <input id="password" type="password" placeholder="password">
+        <input id="title" type="text" placeholder="Title">
+        <input id="body" type="text" placeholder="Body">
+        <button class="btn btn-primary btn-float" id="sendIssue">
+          Send Issue
+        </button>
+      </div>
+    </div>
    </div>
   </article>
   <script type="text/javascript">
@@ -51,5 +59,6 @@
   </script>
   <script src="{{ site.baseurl }}/scripts/rrssb.min.js"></script>
   <script src="{{ site.baseurl }}/scripts/retrieveIssues.js"></script>
+  <script src="{{ site.baseurl }}/scripts/pushIssues.js"></script>
 </body>
 </html>
