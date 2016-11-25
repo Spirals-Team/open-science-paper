@@ -38,11 +38,12 @@ Available there :
 * Post a publication in index.md file.
 * Furnish a list of authors will add it in right form.
 * Using issue as a comment : if an issue is posted into the git repo, it will be display as a comment in the publication.
+* Post comment directly from the publication.
 
 Available soon :
 
 * Gather index.md and _config.yml into index.md.
-* Post comment directly from the publication.
+* Add the possibility to like the publication using github star.
 * Share using social network and mail.
 
 Future Evolution :
@@ -50,4 +51,5 @@ Future Evolution :
 * Post a comment from a pointing a part of the publication.
 * Link authors with some API (ORCID).
 * Adding style.
+	* using toast to mark event (like comment sent, ..etc)
 * ... etc.

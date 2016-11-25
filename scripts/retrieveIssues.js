@@ -12,10 +12,11 @@ function loadComment() {
     var username = user;
     var reponame = repo;
     var requri   = 'https://api.github.com/users/'+username;
-    //var repouri  = 'https://api.github.com/users/'+username+'/repos';
+    var repouri  = 'https://api.github.com/repos/'+username+'/'+reponame;
     var issuesuri = 'https://api.github.com/repos/'+username+'/'+reponame+'/issues';
     
     requestJSON(requri, function(json) {
+        var outhtml
         // else we have a user and we display their info
         /*
         var fullname   = json.name;
@@ -35,6 +36,13 @@ function loadComment() {
         outhtml = outhtml + '<p>Followers: '+followersnum+' - Following: '+followingnum+'<br>Repos: '+reposnum+'</p></div>';
         outhtml = outhtml + '<div class="repolist clearfix">';
         */
+        var repo;
+        $.getJSON(repouri, function(json){
+          repo = json;
+          var star_number = repo.stargazers_count;
+          outhtml = '<div><br>Number of star: '+star_number+'</div>';       
+        });
+
 
         var issues;
         $.getJSON(issuesuri, function(json){
@@ -43,7 +51,6 @@ function loadComment() {
         });          
         
         function outputPageContent() {
-          var outhtml = "";
           if(issues.length == 0) { outhtml = outhtml + '<p>No Comments!</p></div>'; }
           else {
             outhtml = outhtml + '<p><strong>Comments:</strong></p>';

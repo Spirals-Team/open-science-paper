@@ -31,8 +31,14 @@ function postIssue(user, pass, title, body){
 $(function(){
   $('#sendIssue').on('click', function(e){
     e.preventDefault();
-    var user = $("input#username").val();
-    var pass = $("input#password").val();
+    if (localStorage.getItem('user') === null){
+      var user = $("input#username").val();
+      var pass = $("input#password").val();
+    }
+    else {
+      var user = localStorage.getItem('user');
+      var pass = localStorage.getItem('password');
+    }
     var title = $("input#title").val();
     var body = $("input#body").val();
     postIssue(user, pass, title, body);
