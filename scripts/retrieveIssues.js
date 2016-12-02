@@ -59,7 +59,9 @@ function loadComment() {
         $.getJSON(repouri, function(json){
           repo = json;
           var star_number = repo.stargazers_count;
-          outhtml = '<div><br>Number of star: '+star_number+'</div>';       
+          outhtml = '<ol class="breadcrumb">';
+          outhtml = outhtml+ '<div>Number of star: '+star_number+'</div>';       
+          outhtml = outhtml+ '</ol>';
         });
 
 
