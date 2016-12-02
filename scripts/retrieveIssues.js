@@ -60,7 +60,8 @@ function loadComment() {
           repo = json;
           var star_number = repo.stargazers_count;
           outhtml = '<ol class="breadcrumb">';
-          outhtml = outhtml+ '<div>Number of star: '+star_number+'</div>';       
+          outhtml = outhtml+ '<li>Number of star: <span class="badge">'+star_number+'</span></li>';       
+          //outhtml = outhtml+ '<li class="btn btn-primary btn-small">Add Star</li>'
           outhtml = outhtml+ '</ol>';
         });
 
