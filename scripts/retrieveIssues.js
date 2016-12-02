@@ -1,14 +1,33 @@
- 
-  function requestJSON(url, callback) {
-    $.ajax({
-      url: url,
-      complete: function(xhr) {
-        callback.call(null, xhr.responseJSON);
-      }
-    });
-  }
+function getCookie(sName) {
+  var cookContent = document.cookie, cookEnd, i, j;
+  var sName = sName + "=";
+  for (i=0, c=cookContent.length; i<c; i++) {
+    j = i + sName.length;
+    if (cookContent.substring(i, j) == sName) {
+      cookEnd = cookContent.indexOf(";", j);
+      if (cookEnd == -1) 
+        cookEnd = cookContent.length;
+      return decodeURIComponent(cookContent.substring(j, cookEnd));
+    }
+  }       
+  return null;
+}
+
+function requestJSON(url, callback) {
+  $.ajax({
+    url: url,
+    complete: function(xhr) {
+      callback.call(null, xhr.responseJSON);
+    }
+  });
+}
 
 function loadComment() {
+    //hide button if we're signed in
+    if (getCookie("user") == null || getCookie("user") == "")
+      $('#signOut').hide();
+    else $('#signIn').hide();
+
     var username = user;
     var reponame = repo;
     var requri   = 'https://api.github.com/users/'+username;

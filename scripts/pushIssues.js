@@ -1,3 +1,18 @@
+function getCookie(sName) {
+  var cookContent = document.cookie, cookEnd, i, j;
+  var sName = sName + "=";
+  for (i=0, c=cookContent.length; i<c; i++) {
+    j = i + sName.length;
+    if (cookContent.substring(i, j) == sName) {
+      cookEnd = cookContent.indexOf(";", j);
+      if (cookEnd == -1) 
+        cookEnd = cookContent.length;
+      return decodeURIComponent(cookContent.substring(j, cookEnd));
+    }
+  }       
+  return null;
+}
+
 function postJSON(url, data, user, pass) {
   $.ajax({
     type: "POST",
@@ -31,13 +46,12 @@ function postIssue(user, pass, title, body){
 $(function(){
   $('#sendIssue').on('click', function(e){
     e.preventDefault();
-    if (localStorage.getItem('user') === null){
-      var user = $("input#username").val();
-      var pass = $("input#password").val();
+    if (getCookie("user") != null){
+      var user = getCookie("user");
+      var pass = getCookie("pass");
     }
     else {
-      var user = localStorage.getItem('user');
-      var pass = localStorage.getItem('password');
+      alert("You need to be signed in to comment.")
     }
     var title = $("input#title").val();
     var body = $("input#body").val();

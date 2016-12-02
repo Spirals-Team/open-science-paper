@@ -1,13 +1,34 @@
-function save(user, pass){
-	localStorage.setItem('user', user);
-	localStorage.setItem('password', pass);
+function setCookie(sName, sValue) {
+    var today = new Date(), expires = new Date();
+    expires.setTime(today.getTime() + (365*24*60*60*1000));
+    document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
 }
 
 $(function(){
   $('#connect').on('click', function(e){
     e.preventDefault();
-    var user = $("input#username").val();
-    var pass = $("input#password").val();
-    save(user, pass);
+    if (navigator.cookieEnabled){
+    	var user = $("input#username").val();
+    	var pass = $("input#password").val();
+    	setCookie("user", user);
+    	setCookie("pass", pass);
+    	console.log("cookie set");
+
+    	//hide button
+    	$('#signIn').hide();
+    	$('#signOut').show();
+    } else {
+    	alert("You need to activate cookie.")
+    }
+    
   })
+
+  $('#signOut').on('click', function(e){
+ 	e.preventDefault;
+ 	setCookie("user", "");
+ 	setCookie("pass", "");
+ 	$('#signOut').hide();
+ 	$('#signIn').show();
+ })
 });
+
