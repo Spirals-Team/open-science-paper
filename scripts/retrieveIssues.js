@@ -1,21 +1,41 @@
- 
-  function requestJSON(url, callback) {
-    $.ajax({
-      url: url,
-      complete: function(xhr) {
-        callback.call(null, xhr.responseJSON);
-      }
-    });
-  }
+function getCookie(sName) {
+  var cookContent = document.cookie, cookEnd, i, j;
+  var sName = sName + "=";
+  for (i=0, c=cookContent.length; i<c; i++) {
+    j = i + sName.length;
+    if (cookContent.substring(i, j) == sName) {
+      cookEnd = cookContent.indexOf(";", j);
+      if (cookEnd == -1) 
+        cookEnd = cookContent.length;
+      return decodeURIComponent(cookContent.substring(j, cookEnd));
+    }
+  }       
+  return null;
+}
+
+function requestJSON(url, callback) {
+  $.ajax({
+    url: url,
+    complete: function(xhr) {
+      callback.call(null, xhr.responseJSON);
+    }
+  });
+}
 
 function loadComment() {
+    //hide button if we're signed in
+    if (getCookie("user") == null || getCookie("user") == "")
+      $('#signOut').hide();
+    else $('#signIn').hide();
+
     var username = user;
     var reponame = repo;
     var requri   = 'https://api.github.com/users/'+username;
-    //var repouri  = 'https://api.github.com/users/'+username+'/repos';
+    var repouri  = 'https://api.github.com/repos/'+username+'/'+reponame;
     var issuesuri = 'https://api.github.com/repos/'+username+'/'+reponame+'/issues';
     
     requestJSON(requri, function(json) {
+        var outhtml
         // else we have a user and we display their info
         /*
         var fullname   = json.name;
@@ -35,6 +55,16 @@ function loadComment() {
         outhtml = outhtml + '<p>Followers: '+followersnum+' - Following: '+followingnum+'<br>Repos: '+reposnum+'</p></div>';
         outhtml = outhtml + '<div class="repolist clearfix">';
         */
+        var repo;
+        $.getJSON(repouri, function(json){
+          repo = json;
+          var star_number = repo.stargazers_count;
+          outhtml = '<ol class="breadcrumb">';
+          outhtml = outhtml+ '<li>Number of star: <span class="badge">'+star_number+'</span></li>';       
+          //outhtml = outhtml+ '<li class="btn btn-primary btn-small">Add Star</li>'
+          outhtml = outhtml+ '</ol>';
+        });
+
 
         var issues;
         $.getJSON(issuesuri, function(json){
@@ -43,7 +73,6 @@ function loadComment() {
         });          
         
         function outputPageContent() {
-          var outhtml = "";
           if(issues.length == 0) { outhtml = outhtml + '<p>No Comments!</p></div>'; }
           else {
             outhtml = outhtml + '<p><strong>Comments:</strong></p>';
