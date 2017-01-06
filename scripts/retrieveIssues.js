@@ -28,7 +28,7 @@ function loadComment() {
       $('#signOut').hide();
     else $('#signIn').hide();
 
-    var username = user;
+    var username = userrepo;
     var reponame = repo;
     var requri   = 'https://api.github.com/users/'+username;
     var repouri  = 'https://api.github.com/repos/'+username+'/'+reponame;
@@ -49,11 +49,20 @@ function loadComment() {
         var issues;
         $.getJSON(issuesuri, function(json){
           issues = json;   
-          outputPageContent();                
+          outputPageContent();  
+          toastr["info"]("Comments loaded");              
+        })
+        .fail(function () {
+          toastr["error"]("Comments not loaded <br/> (check User/Repo in _config.yml)");
         });          
+
         
         function outputPageContent() {
-          if(issues.length == 0) { outhtml = outhtml + '<p>No Comments!</p></div>'; }
+          if(issues.length == 0) { 
+            //outhtml = outhtml + '<p>No Comments!</p></div>'; 
+            toastr["info"]("No Comments!");
+            //return false;
+          }
           else {
             outhtml = outhtml + '<p><strong>Comments:</strong></p>';
             $.each(issues, function(index) {
@@ -105,4 +114,5 @@ $(function() {
     ]
   }];
   sideComments = new sideComments('#commentable-area', currentUser,existingComments);
+
 });

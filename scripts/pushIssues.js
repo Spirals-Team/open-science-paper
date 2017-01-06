@@ -26,12 +26,26 @@ function postJSON(url, data, user, pass) {
   })
   .done(function( data ) {
     console.log( data );
+    toastr["success"]("Issue sent");
+  })
+  .fail(function() {
+    // body...
+    toastr["error"]("Invalid login");
   });
 }
 
 function postIssue(user, pass, title, body){
 	var uploadURL ="https://api.github.com/repos/whispyy/API-git/issues";
 	console.log(uploadURL);
+  if (user == null || user == ""){
+      toastr["warning"]("You need to be signed in to comment");
+      return false;
+  }
+  if (title == "" || body == ""){
+      toastr["warning"]("All fields must be completed");
+      return false;
+  }
+
 	var data = 
 	JSON.stringify(
 	  {
@@ -41,6 +55,7 @@ function postIssue(user, pass, title, body){
     );
 
     postJSON(uploadURL, data, user, pass);
+    
 }
 
 $(function(){
@@ -50,11 +65,12 @@ $(function(){
       var user = getCookie("user");
       var pass = getCookie("pass");
     }
-    else {
-      alert("You need to be signed in to comment.")
-    }
+
     var title = $("input#title").val();
     var body = $("input#body").val();
+
     postIssue(user, pass, title, body);
+    
+
   })
 });
