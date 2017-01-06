@@ -35,26 +35,7 @@ function loadComment() {
     var issuesuri = 'https://api.github.com/repos/'+username+'/'+reponame+'/issues';
     
     requestJSON(requri, function(json) {
-        var outhtml
-        // else we have a user and we display their info
-        /*
-        var fullname   = json.name;
-        var username   = json.login;
-        var aviurl     = json.avatar_url;
-        var profileurl = json.html_url;
-        var location   = json.location;
-        var followersnum = json.followers;
-        var followingnum = json.following;
-        var reposnum     = json.public_repos;
-        
-        
-        if(fullname == undefined) { fullname = username; }
-        
-        var outhtml = '<h2>'+fullname+' <span class="smallname">(@<a href="'+profileurl+'" target="_blank">'+username+'</a>)</span></h2>';
-        outhtml = outhtml + '<div class="ghcontent"><div class="avi"><a href="'+profileurl+'" target="_blank"><img src="'+aviurl+'" width="80" height="80" alt="'+username+'"></a></div>';
-        outhtml = outhtml + '<p>Followers: '+followersnum+' - Following: '+followingnum+'<br>Repos: '+reposnum+'</p></div>';
-        outhtml = outhtml + '<div class="repolist clearfix">';
-        */
+        var outhtml;
         var repo;
         $.getJSON(repouri, function(json){
           repo = json;
@@ -64,7 +45,6 @@ function loadComment() {
           //outhtml = outhtml+ '<li class="btn btn-primary btn-small">Add Star</li>'
           outhtml = outhtml+ '</ol>';
         });
-
 
         var issues;
         $.getJSON(issuesuri, function(json){
@@ -87,3 +67,42 @@ function loadComment() {
         } // end outputPageContent()
     }); // end requestJSON Ajax call
 }
+
+/* Block Comment */
+
+$(function() {
+  var sideComments = require('side-comments');
+
+  var commentable = document.getElementById('commentable-area');
+
+  var size = $('#commentable-area p').length;
+  console.log(size);
+  for (var i = 0; i < size; i++){
+    var p = commentable.getElementsByTagName('p')[i];
+    p.setAttribute('class','commentable-section');
+    p.setAttribute('data-section-id',i+1);
+  }
+
+  var currentUser = {
+    id: 1,
+    name: getCookie("user")
+  };
+
+  var existingComments = [
+  {
+    "sectionId": "1",
+    "comments": [
+      {
+        "authorAvatarUrl": "http://f.cl.ly/items/1W303Y360b260u3v1P0T/jon_snow_small.png",
+        "authorName": "Jon Sno",
+        "comment": "I'm Ned Stark's bastard. Related: I know nothing."
+      },
+      {
+        "authorAvatarUrl": "http://f.cl.ly/items/2o1a3d2f051L0V0q1p19/donald_draper.png",
+        "authorName": getCookie("user"),
+        "comment": "I need a scotch."
+      }
+    ]
+  }];
+  sideComments = new sideComments('#commentable-area', currentUser,existingComments);
+});
