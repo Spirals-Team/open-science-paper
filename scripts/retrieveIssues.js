@@ -88,21 +88,27 @@ $(function() {
     name: getCookie("user")
   };
 
+  var pulluri = "https://api.github.com/repos/whispyy/API-git/pulls";
+  $.getJSON(pulluri, function(json){
+    var existingComments = json
+  });
+
   var existingComments = [
   {
     "sectionId": "1",
     "comments": [
       {
-        "authorAvatarUrl": "http://f.cl.ly/items/1W303Y360b260u3v1P0T/jon_snow_small.png",
         "authorName": "Jon Sno",
         "comment": "I'm Ned Stark's bastard. Related: I know nothing."
       },
       {
-        "authorAvatarUrl": "http://f.cl.ly/items/2o1a3d2f051L0V0q1p19/donald_draper.png",
         "authorName": getCookie("user"),
-        "comment": "I need a scotch."
+        "comment": "Tested side comments."
       }
     ]
   }];
+
   sideComments = new sideComments('#commentable-area', currentUser,existingComments);
+
 });
+
