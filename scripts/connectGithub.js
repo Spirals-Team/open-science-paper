@@ -1,9 +1,3 @@
-function setCookie(sName, sValue) {
-    var today = new Date(), expires = new Date();
-    expires.setTime(today.getTime() + (365*24*60*60*1000));
-    document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
-}
-
 $(function(){
   $('#connect').on('click', function(e){
     e.preventDefault();
