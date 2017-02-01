@@ -19,12 +19,15 @@
   <!--css side comments-->
   <link rel="stylesheet" href="{{ site.baseurl }}/css/default-theme.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/css/side-comments.css">
+  <!--css toastr-->
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/toastr.css">
   <!-- end css -->
 
   <!-- lib - js -->
   <script src="{{ site.baseurl }}/scripts/lib/jquery.js"></script>
   <script src="{{ site.baseurl }}/scripts/lib/bootstrap.min.js"></script>
   <script src="{{ site.baseurl }}/scripts/lib/side-comments.js"></script>
+  <script src="{{ site.baseurl }}/scripts/lib/toastr.js"></script>
   <!-- end lib - js -->
 
   <!-- modules - js -->
@@ -65,12 +68,23 @@
     </div>
     <div id="comments" class="list-group"></div>
     <div id="addComment">
-      <div>
-        <input id="title" type="text" placeholder="Title">
-        <input id="body" type="text" placeholder="Body">
-        <button class="btn btn-primary btn-float" id="sendIssue">
-          Send Issue
-        </button>
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h5>Comment</h5>
+        </div>
+        <div class="panel-body">
+          <div class="col-xs-12">
+            <input id="title" type="text" placeholder="Title" style="min-width: 100%">
+          </div>
+          <div class="col-xs-12">
+            <textarea id="body" rows="3" placeholder="Body" style="min-width: 100%"></textarea>
+          </div>
+          <div class="col-xs-3 col-xs-offset-9">
+            <button class="btn btn-primary btn-float" id="sendIssue">
+              Send Issue
+            </button>
+          </div>
+        </div>
       </div>
     </div>
    </div>
@@ -102,7 +116,7 @@
   </div>
   <!-- end Modal -->
   <script type="text/javascript">
-  var user = "{{ site.username }}"
+  var userrepo = "{{ site.username }}"
   var repo = "{{ site.reponame }}"
   </script>
   <script src="{{ site.baseurl }}/scripts/rrssb.min.js"></script>
