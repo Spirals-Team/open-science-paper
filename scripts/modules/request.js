@@ -1,4 +1,3 @@
-
 function loadComment() {
     //hide button if we're signed in
     if (getCookie("user") == null || getCookie("user") == "")
