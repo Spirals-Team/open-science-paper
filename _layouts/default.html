@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="{{ site.description }}">
-  <meta name="keywords" content="{{site.keywords}}">
-  <meta name="author" content="{{site.author}}">
+  <meta name="description" content="{{ page.description }}">
+  <meta name="keywords" content="{{page.keywords}}">
+  <meta name="author" content="{{page.author}}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ site.title }}</title>
+  <title>{{ page.title }}</title>
 
   <!-- css -->
   <link rel="stylesheet" href="{{ site.baseurl }}/css/normalize.css">
@@ -41,7 +41,7 @@
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <a class="navbar-brand navbar-center" href="#">{{ site.title }}</a>
+      <a class="navbar-brand navbar-center" href="#">{{ page.title }}</a>
       <button id="signIn" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#myModal">Sign-in</button>
       <button id="signOut" type="button" class="btn btn-default navbar-btn navbar-right">Sign-out</button>
     </div>
@@ -49,10 +49,10 @@
   <br /><br />
   <article>
    <div class="container">
-    <h1><a href="./">{{ site.title }}</a></h1>
+    <h1><a href="./">{{ page.title }}</a></h1>
     <br />
     <div class="auteurs">
-     {% for author in site.authors %}
+     {% for author in page.authors %}
       <div class="panel panel-default text-center">
         <div class="panel-heading">{{ author.name }}</div>
         <div class="panel-body">

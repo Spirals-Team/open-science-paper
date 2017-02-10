@@ -41,10 +41,14 @@ Available there :
 * Post comment directly from the publication.
 * Adding style.
 	* using toast to mark event (like comment sent, ..etc)
+* Gather index.md and _config.yml into index.md.
+	* every information concerning the article is now in index.md
+	* in _config.yml there is just : 
+		* site setting : url & baseurl (by default no need to touch it)
+		* github setting to allow comment : username & reponame (set it to point to your repo)
 
 Available soon :
 
-* Gather index.md and _config.yml into index.md.
 * Add the possibility to like the publication using github star.
 * Share using social network and mail.
 
@@ -52,5 +56,4 @@ Future Evolution :
 
 * Post a comment from a pointing a part of the publication.
 * Link authors with some API (ORCID).
-
 * ... etc.
