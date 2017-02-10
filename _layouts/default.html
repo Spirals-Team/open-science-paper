@@ -53,12 +53,14 @@
     <br />
     <div class="auteurs">
      {% for author in page.authors %}
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">{{ author.name }}</div>
-        <div class="panel-body">
-        {{ author.mail }}
-        <br />
-        {{ author.location }}
+     <div class="col-xs-12 col-md-6">
+        <div class="panel panel-default text-center" style="height:150px">
+          <div class="panel-heading">{{ author.name }}</div>
+          <div class="panel-body" style="word-wrap: break-word">
+          {{ author.mail }}
+          <br />
+          {{ author.location }}
+          </div>
         </div>
       </div>
       {% endfor %}

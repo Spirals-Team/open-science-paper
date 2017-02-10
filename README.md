@@ -54,6 +54,6 @@ Available soon :
 
 Future Evolution :
 
-* Post a comment from a pointing a part of the publication.
+* Post a comment from pointing a part of the publication.
 * Link authors with some API (ORCID).
 * ... etc.
