@@ -93,9 +93,9 @@
             $.getJSON(repouri, function(json){
               repo = json;
               var star_number = repo.stargazers_count;
-              outhtml = '<ol class="breadcrumb">';
+              outhtml = '<ol class="breadcrumb primary">';
               outhtml = outhtml+ '<li>Number of star: <span class="badge">'+star_number+'</span></li>';       
-              //outhtml = outhtml+ '<li class="btn btn-primary btn-small">Add Star</li>'
+              outhtml = outhtml+ '<li><a target ="_blank" href="https://github.com/'+username+'/'+reponame+'/"><i class="fa fa-star"></i>Star</a></li>'
               outhtml = outhtml+ '</ol>';
             });
 
