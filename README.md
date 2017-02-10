@@ -39,6 +39,8 @@ Available there :
 * Furnish a list of authors will add it in right form.
 * Using issue as a comment : if an issue is posted into the git repo, it will be display as a comment in the publication.
 * Post comment directly from the publication.
+* Adding style.
+	* using toast to mark event (like comment sent, ..etc)
 
 Available soon :
 
@@ -50,6 +52,5 @@ Future Evolution :
 
 * Post a comment from a pointing a part of the publication.
 * Link authors with some API (ORCID).
-* Adding style.
-	* using toast to mark event (like comment sent, ..etc)
+
 * ... etc.
