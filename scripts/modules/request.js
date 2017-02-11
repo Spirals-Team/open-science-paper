@@ -101,15 +101,18 @@
 
             var issues;
             $.getJSON(issuesuri, function(json){
-              issues = json;   
-              outputPageContent();  
+              issues = json;
+              outputPageContent();
+              sidePageContent();
               toastr["info"]("Comments loaded");              
             })
             .fail(function () {
               toastr["error"]("Comments not loaded <br/> (check User/Repo in _config.yml)");
             });          
 
-            
+            /*
+             * Print comment at the bottom of the page
+             */
             function outputPageContent() {
               if(issues.length == 0) { 
                 toastr["info"]("No Comments!");
@@ -126,6 +129,46 @@
               }
               $('#comments').html(outhtml);
             } // end outputPageContent()
+
+            /*
+             * put comment to the sidecomment
+             */
+            function sidePageContent(){
+              var sideComments = require('side-comments');
+
+              var commentable = document.getElementById('commentable-area');
+
+              var size = $('#commentable-area p').length;
+              console.log(size);
+              for (var i = 0; i < size; i++){
+                var p = commentable.getElementsByTagName('p')[i];
+                p.setAttribute('class','commentable-section');
+                p.setAttribute('data-section-id',i+1);
+              }
+
+              var currentUser = {
+                id: 1,
+                name: Cookie.getCookie("user")
+              };
+
+              var existingComments = [];
+              $.each(issues, function(index){
+                for (var i = 0; i < size; i++){
+                  if (issues[index].title == i)
+                    existingComments.push({
+                        "sectionId": i.toString(),
+                        "comments":[
+                          {
+                            "authorName": issues[index].user.login,
+                            "comment": issues[index].body
+                          }]
+                    });
+                }
+              });
+              console.log(existingComments);
+              sideComments = new sideComments('#commentable-area', currentUser,existingComments);
+              console.log(sideComments);
+            }
         }); // end requestJSON Ajax call
     }
 
