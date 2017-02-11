@@ -139,9 +139,13 @@
               var commentable = document.getElementById('commentable-area');
 
               var size = $('#commentable-area p').length;
+
+              var existingComments = [];
+
               console.log(size);
               for (var i = 0; i < size; i++){
                 var p = commentable.getElementsByTagName('p')[i];
+                existingComments[i] = { "sectionId": i.toString(), "comments":[]};
                 p.setAttribute('class','commentable-section');
                 p.setAttribute('data-section-id',i+1);
               }
@@ -151,19 +155,16 @@
                 name: Cookie.getCookie("user")
               };
 
-              var existingComments = [];
+              
               $.each(issues, function(index){
-                for (var i = 0; i < size; i++){
-                  if (issues[index].title == i)
-                    existingComments.push({
-                        "sectionId": i.toString(),
-                        "comments":[
-                          {
-                            "authorName": issues[index].user.login,
-                            "comment": issues[index].body
-                          }]
+                for (var i =0; i < size; i++)
+                  if (issues[index].title == i){
+                    existingComments[i].comments.push({
+                      "authorAvatarUrl": issues[index].user.avatar_url,
+                      "authorName": issues[index].user.login,
+                      "comment": issues[index].body
                     });
-                }
+                  }
               });
               console.log(existingComments);
               sideComments = new sideComments('#commentable-area', currentUser,existingComments);
