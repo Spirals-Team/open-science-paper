@@ -33,6 +33,8 @@ We try to make it easier as possible to use. Currently it is needed to care abou
 
 ## Releases informations
 
+*See full user guide [here](doc.md) .*
+
 Available there : 
 
 * Post a publication in index.md file.
