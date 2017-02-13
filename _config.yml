@@ -1,29 +1,13 @@
 # Site settings
-title: "Open Science Paper"
-description: "A modern web framework for publishing true Open Science papers on GitHub."
-keywords: "HTML, CSS, JS"
 url: ""
-baseurl: "/publication"
+baseurl: ""
 
-
-# authors of the publication
-authors:
-  - name: "JF Durand"
-    mail: "exemple@addressemail.com"
-    location: "Cité Scientifique, 59655 Villeneuve d'Ascq"
-  - name: "Vasilina Frolkova"
-    mail: "exemple@addressemail.com"
-    location: "Cité Scientifique, 59655 Villeneuve d'Ascq"
-  - name: "Third Person"
-    mail: "third@person.com"
-    location: "Somewhere"
-
-# using git issues as comment
+# Git setup to use the comment section
 username: "Whispyy"
 reponame: "API-git"
 
-
-font-awesome-include: true # make this false if you don't need font-awesome
+# using font awesome turn it to false if you don't want
+font-awesome-include: true
 
 # Build settings
 markdown: kramdown

@@ -1,5 +1,21 @@
 ---
 layout: default
+title: Open Science Paper
+description: "A modern web framework for publishing true Open Science papers on GitHub."
+keywords: "HTML, CSS, JS"
+authors:
+  - name: "JF Durand"
+    mail: "exemple@mail.com"
+    location: "Cité Scientifique, 59655 Villeneuve d'Ascq"
+  - name: "Vasilina Frolkova"
+    mail: "exemple@mail.com"
+    location: "Cité Scientifique, 59655 Villeneuve d'Ascq"
+  - name: "Third Person"
+    mail: "third@person.com"
+    location: "Somewhere"
+  - name: "Fourth Person"
+    mail: "fourth@person.com"
+    location: ""
 ---
 
 

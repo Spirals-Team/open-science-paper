@@ -33,23 +33,35 @@ We try to make it easier as possible to use. Currently it is needed to care abou
 
 ## Releases informations
 
+*See full user guide [here](doc.md) .*
+
 Available there : 
 
 * Post a publication in index.md file.
 * Furnish a list of authors will add it in right form.
 * Using issue as a comment : if an issue is posted into the git repo, it will be display as a comment in the publication.
 * Post comment directly from the publication.
+* Adding style.
+	* using toast to mark event (like comment sent, ..etc)
+* Gather index.md and _config.yml into index.md.
+	* every information concerning the article is now in index.md
+	* in _config.yml there is just : 
+		* site setting : url & baseurl (by default no need to touch it)
+		* github setting to allow comment : username & reponame (set it to point to your repo)
+* Add the possibility to like the publication using github star.
+* Post a comment from pointing a part of the publication.
+	* For the moment : using issue.
 
 Available soon :
 
-* Gather index.md and _config.yml into index.md.
-* Add the possibility to like the publication using github star.
 * Share using social network and mail.
 
 Future Evolution :
 
-* Post a comment from a pointing a part of the publication.
 * Link authors with some API (ORCID).
-* Adding style.
-	* using toast to mark event (like comment sent, ..etc)
 * ... etc.
+
+## Librairies used
+
+* [toastr](https://github.com/CodeSeven/toastr)
+* [side-comments](http://aroc.github.io/side-comments-demo)
