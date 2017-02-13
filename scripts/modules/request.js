@@ -169,6 +169,18 @@
               console.log(existingComments);
               sideComments = new sideComments('#commentable-area', currentUser,existingComments);
               console.log(sideComments);
+              sideComments.on('commentPosted', function( comment ) {
+                if (Cookie.getCookie("user") == "" || Cookie.getCookie("user") == null)
+                  toastr["warning"]("You need to be signed in to comment");
+                postIssue(
+                    Cookie.getCookie("user"),
+                    Cookie.getCookie("pass"),
+                    comment.sectionId.toString(),
+                    comment.comment,
+                    username,
+                    reponame);
+                console.log(comment);
+              });
             }
         }); // end requestJSON Ajax call
     }

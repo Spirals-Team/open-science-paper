@@ -13,9 +13,7 @@ $(function(){
     var body = $("textarea#body").val();
 
     Request.postIssue(user, pass, title, body, userrepo,repo);
-    
-
-  })
+  });
 });
 
 

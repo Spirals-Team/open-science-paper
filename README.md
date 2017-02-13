@@ -46,14 +46,20 @@ Available there :
 	* in _config.yml there is just : 
 		* site setting : url & baseurl (by default no need to touch it)
 		* github setting to allow comment : username & reponame (set it to point to your repo)
+* Add the possibility to like the publication using github star.
+* Post a comment from pointing a part of the publication.
+	* For the moment : using issue.
 
 Available soon :
 
-* Add the possibility to like the publication using github star.
 * Share using social network and mail.
 
 Future Evolution :
 
-* Post a comment from pointing a part of the publication.
 * Link authors with some API (ORCID).
 * ... etc.
+
+## Librairies used
+
+* [toastr](https://github.com/CodeSeven/toastr)
+* [side-comments](http://aroc.github.io/side-comments-demo)
